@@ -3,47 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>RAHM</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Share+Tech+Mono&family=Xanh+Mono:ital@0;1&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../static/css/index.css">
+
+    <script src="https://kit.fontawesome.com/10856fe2b6.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
+
+    <section id="popups">
+        <div class="add-to-clipboard">
+            <p>Information enregistrée dans le presse-papiers.</p>
+        </div>
+    </section>
     
     <section id="landing-page">
 
         <nav>
         
             <span class="left">
-                <a href="#" class="nav-link logo">RAHM</a>
+                <a href="#" class="logo"><span>RA</span><span>HM</span></a>
             </span>
             <span class="right">
                 <a href="#" class="nav-link">Horaires</a>
                 <a href="#" class="nav-link">A propos</a>
                 <a href="#" class="nav-link">Services</a>
-                <button></button>
+
+                <!-- <button>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </button> -->
             </span>
 
         </nav>
 
         <div>
 
-            <div class="bg"></div>
             <div class="left">
-                <div class="social-media"></div>
-                <div class="social-media"></div>
-                <div class="social-media"></div>
+                <a class="social-media" href="https://www.facebook.com/p/Mosque-mohsinine-100068033047489/" target="_blank">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <button class="social-media" onclick="copyToClipBoard()">
+                    <i class="fa-solid fa-at"></i>
+                </button>
+                <button class="social-media" onclick="copyToClipBoard()">
+                    <i class="fa-solid fa-phone"></i>
+                </button>
             </div>
             <div class="mid">
-                <h1>مسجد المحسنين</h1>
-                <p>Ouverte à tous, au service de chacun.</p>
+                <h1>مسجد المحسنين<span>Ouverte à tous, au service de chacun.</span></h1>
             </div>
             <div class="right">
-                <p><span></span> 179se. (Hamza.C) <span></span></p>
+                <span></span>
+                <p> 179se. (Hamza.C)</p>
+                <span></span>
             </div>
 
         </div>
 
     </section>
+
+    <!-- <section id="prayer-times">
+        
+        <div class="current-date">
+            <h1>00:00:00</h1>
+            <p>01 muharam 2025</p>
+            <p>Lundi 01 janvier 2025</p>
+        </div>
+
+        <div class="prayer-box">
+            <div><span class="name">Fajr</span><span class="time"><h2>00:00</h2></span><span class="extra-time"><p>+00</p></span></div>
+            <div><span class="name">Dhuhr</span><span class="time"><h2>00:00</h2></span><span class="extra-time"><p>+00</p></span></span></div>
+            <div><span class="name">Asr</span><span class="time"><h2>00:00</h2></span><span class="extra-time"><p>+00</p></span></span></div>
+            <div><span class="name">Maghrib</span><span class="time"><h2>00:00</h2></span><span class="extra-time"><p>+00</p></span></span></div>
+            <div><span class="name">Isha</span><span class="time"><h2>00:00</h2></span><span class="extra-time"><p>+00</p></span></span></div>
+        </div>
+
+        <div class="next-prayer">
+            <h1>PRIERE SUIVANTE</h1>
+            <p>Ces horaires sont calculés selon le calendrier local. De légères variations peuvent exister selon les jours et les méthodes de calcul.</p>
+        </div>
+
+    </section> -->
 
 </body>
 </html>
