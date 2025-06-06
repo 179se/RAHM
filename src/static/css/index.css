@@ -2,6 +2,7 @@
 
 *{
     padding: 0; margin: 0;
+    scroll-behavior: smooth;
 }
 
 body{
@@ -16,7 +17,7 @@ body{
     background-repeat: no-repeat;
 
     font-family: "Montserrat";
-    min-height: 300vh;
+    min-height: 400vh;
 }
 
 
@@ -26,6 +27,7 @@ a{
     color: white;
 }
 
+/* pop-ups */
 
 #popups{
     position: fixed;
@@ -52,6 +54,7 @@ a{
     opacity: 1;
 }
 
+/* landing page */
 
 #landing-page{
     height: 100vh;
@@ -61,6 +64,8 @@ a{
     position: fixed;
     width: 100vw; height: 75px;
     display: flex; gap: 5px;
+
+    z-index: 999999;
 }
 #landing-page nav>span{
     flex: 1;
@@ -173,14 +178,14 @@ a{
     width: fit-content;
     text-align: center;
 
-    font-size: 7vw;
+    font-size: max(3em, 7vw);
     font-weight: bold;
 }
 #landing-page>div .mid h1 span{
     width: fit-content;
-    padding-inline: 20px;
+    margin-inline: 1vw;
 
-    font-size: .8vw;
+    font-size: max(8px, .8vw);
     font-weight: 200;
     font-style: italic;
 }
@@ -201,3 +206,90 @@ a{
     width: 1px; height: 20px;
     background-color: white;
 }
+
+/* prayer times */
+
+#prayer-times{
+    height: 100vh;
+    display: flex; flex-direction: column;
+}
+
+#prayer-times .current-date,
+#prayer-times .prayer-box,
+#prayer-times .next-prayer{
+    flex: 1;
+    min-height: 200px;
+}
+
+#prayer-times .current-date{
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+
+    font-family: "Montserrat";
+}
+#prayer-times .current-date h1{
+    font-size: min(20vw, 5em);
+}
+#prayer-times .current-date p{
+    font-size: min(8vw, 1em);
+    font-weight: 200;
+}
+
+#prayer-times .prayer-box{
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+#prayer-times .prayer-box .slidder{
+    display: flex; gap: 20px;
+    justify-content: center;
+
+    padding: 20px;
+
+    /* transform: translateX(calc(190px*-2)); */
+}
+#prayer-times .prayer-box .slidder div{
+    min-width: 150px; min-height: 150px;
+    aspect-ratio: 1 / 1;
+
+    display: flex; flex-direction: column;
+    justify-content: space-evenly; align-items: center;
+    flex-shrink: 0;
+
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: inset 10px 10px 40px 0 rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+
+    border-radius: 25px;
+    transform: scale(1);
+
+    transition: background-color .5s ease, box-shadow .5s ease, transform .5s ease;
+}
+#prayer-times .prayer-box .slidder div span{
+    padding: 10px;
+    font-size: 1em;
+}
+#prayer-times .prayer-box .slidder div.active{
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: inset 10px 10px 40px 0 rgba(255, 255, 255, 0.1);
+    transform: scale(1);
+}
+
+#prayer-times .next-prayer{
+    display: flex; flex-direction: column;
+    justify-content: start; align-items: center;
+    gap: 20px;
+}
+#prayer-times .next-prayer h1{
+    font-size: min(6vw, 3em);
+    /* transform: translateY(-50%); */
+}
+#prayer-times .next-prayer p{
+    padding-inline: 10vw;
+    text-align: center;
+
+    font-size: min(2vw, 1em);
+    font-weight: 200;
+}
+
+/* about */
