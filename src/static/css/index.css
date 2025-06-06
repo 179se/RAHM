@@ -17,7 +17,9 @@ body{
     background-repeat: no-repeat;
 
     font-family: "Montserrat";
+    font-weight: 200;
     min-height: 400vh;
+    min-height: 3500px;
 }
 
 
@@ -58,6 +60,7 @@ a{
 
 #landing-page{
     height: 100vh;
+    min-height: 400px;
 }
 
 #landing-page nav{
@@ -97,7 +100,6 @@ a{
     padding: 10px 2vw;
     margin-inline: 5px;
 
-    font-weight: 200;
     white-space: nowrap;
 
     transition: color .5s ease;
@@ -136,7 +138,6 @@ a{
 #landing-page>div{
     width: 100%; height: 100%;
     display: flex;
-    
 }
 #landing-page>div .left,
 #landing-page>div .right{
@@ -186,8 +187,8 @@ a{
     margin-inline: 1vw;
 
     font-size: max(8px, .8vw);
-    font-weight: 200;
     font-style: italic;
+    font-weight: 200;
 }
 
 #landing-page>div .right{
@@ -210,15 +211,14 @@ a{
 /* prayer times */
 
 #prayer-times{
-    height: 100vh;
     display: flex; flex-direction: column;
+    padding-block: 80px;
 }
 
 #prayer-times .current-date,
 #prayer-times .prayer-box,
-#prayer-times .next-prayer{
+#prayer-times .sub-text{
     flex: 1;
-    min-height: 200px;
 }
 
 #prayer-times .current-date{
@@ -228,29 +228,24 @@ a{
     font-family: "Montserrat";
 }
 #prayer-times .current-date h1{
-    font-size: min(20vw, 5em);
+    font-size: min(15vw, 5em);
 }
 #prayer-times .current-date p{
     font-size: min(8vw, 1em);
-    font-weight: 200;
 }
 
 #prayer-times .prayer-box{
     display: flex;
-    justify-content: center;
-    overflow: hidden;
-}
-#prayer-times .prayer-box .slidder{
-    display: flex; gap: 20px;
-    justify-content: center;
+    justify-content: center; align-items: center;
 
-    padding: 20px;
+    flex-wrap: wrap;
 
-    /* transform: translateX(calc(190px*-2)); */
+    padding: 40px;
+    gap: 20px;
 }
-#prayer-times .prayer-box .slidder div{
-    min-width: 150px; min-height: 150px;
-    aspect-ratio: 1 / 1;
+#prayer-times .prayer-box div{
+    width: clamp(150px, 15vw, 400px);
+    height: clamp(150px, 15vw, 400px);
 
     display: flex; flex-direction: column;
     justify-content: space-evenly; align-items: center;
@@ -265,31 +260,79 @@ a{
 
     transition: background-color .5s ease, box-shadow .5s ease, transform .5s ease;
 }
-#prayer-times .prayer-box .slidder div span{
-    padding: 10px;
-    font-size: 1em;
-}
-#prayer-times .prayer-box .slidder div.active{
+#prayer-times .prayer-box div.active{
     background-color: rgba(255, 255, 255, 0.1);
     box-shadow: inset 10px 10px 40px 0 rgba(255, 255, 255, 0.1);
     transform: scale(1);
 }
+#prayer-times .prayer-box div span{
+    padding: 10px;
+    font-size: max(1em, 1vw);
+}
 
-#prayer-times .next-prayer{
+
+#prayer-times .sub-text{
     display: flex; flex-direction: column;
     justify-content: start; align-items: center;
     gap: 20px;
 }
-#prayer-times .next-prayer h1{
-    font-size: min(6vw, 3em);
-    /* transform: translateY(-50%); */
-}
-#prayer-times .next-prayer p{
+#prayer-times .sub-text p{
     padding-inline: 10vw;
     text-align: center;
-
     font-size: min(2vw, 1em);
-    font-weight: 200;
 }
 
 /* about */
+
+#about{
+    display: flex;
+    justify-content: center; align-items: stretch;
+    flex-wrap: wrap;
+    /* background-color: orange; */
+}
+
+#about .left,
+#about .right{
+    flex: 1;
+    min-width: 250px;
+    padding-block: 10px;
+    /* border: 1px solid red; */
+}
+#about .left{
+    display: flex; flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+}
+#about .left span{
+    text-align: center;
+    padding-inline: 5vw;
+    display: flex; flex-direction: column;
+    gap: 20px;
+}
+
+#about .left span:nth-child(1) h1{
+    font-size: min(4vw, 2em);
+
+}
+#about .left span:nth-child(2) h4{
+    font-size: min(3vw, 1.5em);
+
+}
+#about .left span p{
+    font-size: min(2vw, 1em);
+}
+
+
+#about .right{
+    display: flex;
+    justify-content: center; align-items: center;
+}
+
+#about .right div{
+    min-height: 30vw;
+    width: 80%;
+
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: inset 10px 10px 40px 0 rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
