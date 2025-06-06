@@ -322,17 +322,16 @@ a{
     font-size: min(2vw, 1em);
 }
 
-
 #about .right{
     display: flex;
     justify-content: center; align-items: center;
+    perspective: 2000px;
+    perspective-origin: center;
+    overflow: visible;
 }
 
-#about .right div{
+#about .right model-viewer{
     min-height: 30vw;
-    width: 80%;
-
-    background-color: rgba(0, 0, 0, 0.1);
-    box-shadow: inset 10px 10px 40px 0 rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
+    width: 100%;
+    overflow: visible;
 }
