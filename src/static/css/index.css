@@ -327,11 +327,9 @@ a{
     justify-content: center; align-items: center;
     perspective: 2000px;
     perspective-origin: center;
-    overflow: visible;
 }
 
-#about .right model-viewer{
+#about .right #canvas{
     min-height: 30vw;
     width: 100%;
-    overflow: visible;
 }

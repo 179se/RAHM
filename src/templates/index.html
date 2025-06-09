@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="../static/css/index.css">
 
     <script src="https://kit.fontawesome.com/10856fe2b6.js" crossorigin="anonymous"></script>
-    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+    <!-- <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script> -->
 
 </head>
 <body>
@@ -104,15 +105,17 @@
             </span>
         </div>
         <div class="right">
-            <model-viewer src="../static/models/RAHM_v4.glb"
+            <!-- <model-viewer src="../static/models/RAHM_v11.glb"
                 alt="modèle 3D de la mosquée"
                 auto-rotate
                 camera-controls
-                ar
-                camera-orbit="-80deg 80deg 1m">
-            </model-viewer>
+                camera-orbit="-60deg 85deg 1m">
+            </model-viewer> -->
+            <canvas id="canvas"></canvas>
         </div>
     </section>
+
+    <script src="../static/js/main.js"></script>
 
 </body>
 </html>
