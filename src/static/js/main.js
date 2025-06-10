@@ -37,3 +37,58 @@ function animate() {
 }
 
 animate();
+
+
+const date = document.querySelector('.current-date');
+const clockEl = date.querySelector('h1');
+const dateArEl = date.querySelector('p:nth-child(2)');
+const dateFrEl = date.querySelector('p:nth-child(3)');
+
+const formatTimeUnit = unit => unit.toString().padStart(2, '0');
+
+const hijriMonths = [
+  "Muḥarram", "Ṣafar", "Rabīʿ al-awwal", "Rabīʿ ath-thānī",
+  "Jumādá al-ūlá", "Jumādá al-ākhirah", "Rajab", "Shaʿbān",
+  "Ramaḍān", "Shawwāl", "Dhū al-Qaʿdah", "Dhū al-Ḥijjah"
+];
+
+const updateTime = () => {
+    const now = new Date();
+
+    const time = [
+        formatTimeUnit(now.getHours()),
+        formatTimeUnit(now.getMinutes()),
+        formatTimeUnit(now.getSeconds())
+    ].join(':');
+    clockEl.textContent = time;
+
+    const optionsFr = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: '2-digit'
+    };
+    const dateFr = now.toLocaleDateString('fr-FR', optionsFr);
+    dateFrEl.textContent = `${dateFr}`;
+
+    const hijriParts = new Intl.DateTimeFormat("en-TN-u-ca-islamic", {
+        day: "numeric",
+        month: "numeric",
+        year: "numeric"
+    }).formatToParts(now);
+
+    let hijriDay, hijriMonth, hijriYear;
+    hijriParts.forEach(part => {
+        if (part.type === "day") hijriDay = part.value.padStart(2, '0');
+        if (part.type === "month") hijriMonth = parseInt(part.value, 10);
+        if (part.type === "year") hijriYear = part.value;
+    });
+
+    const hijriMonthName = hijriMonths[hijriMonth - 1];
+    const formattedHijriDate = `${hijriDay} ${hijriMonthName} ${hijriYear}`;
+    dateArEl.textContent = formattedHijriDate;
+};
+
+updateTime();
+setInterval(updateTime, 1000);
+

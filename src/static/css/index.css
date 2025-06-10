@@ -51,7 +51,7 @@ a{
   width: 140px;
   height: 140px;
 
-  backdrop-filter: invert(1);
+  border: 1px solid var(--txt-color);
   border-radius: 50%;
   transition: transform 0.3s ease;
 }
