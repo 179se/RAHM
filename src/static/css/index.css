@@ -1,18 +1,24 @@
+:root{
+    --bg-primary: #1a1b20;
+    --bg-secondary: rgb(63, 64, 69);
 
+    --txt-color: white;
+    --txt-hover: rgb(0, 255, 21);
+}
 
 *{
     padding: 0; margin: 0;
     scroll-behavior: smooth;
+    cursor: none;
 }
 
 body{
-    background: #1A1B20;
+    background: var(--bg-primary);
     background: radial-gradient(
         circle at 0% 0%, 
-        rgb(63, 64, 69) 0%, 
-        rgb(30, 31, 36) 45%,
-        rgb(26, 27, 32) 85%);
-    color: white;
+        var(--bg-secondary) 0%, 
+        var(--bg-primary) 85%);
+    color: var(--txt-color);
     background-size: 25% 25% cover;
     background-repeat: no-repeat;
 
@@ -20,13 +26,43 @@ body{
     font-weight: 200;
     min-height: 400vh;
     min-height: 3500px;
+
 }
 
 
 
 a{
     text-decoration: none;
-    color: white;
+    color: var(--txt-color);
+}
+
+/* cursor */
+
+#cursor > .slow, #cursor > .fast {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999999;
+}
+
+#cursor .slow .scaler {
+  width: 140px;
+  height: 140px;
+
+  backdrop-filter: invert(1);
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+#cursor .fast .scaler {
+  width: 50px;
+  height: 50px;
+
+  backdrop-filter: invert(1);
+  border-radius: 50%;
+  transition: transform 0.3s ease;
 }
 
 /* pop-ups */
@@ -44,10 +80,11 @@ a{
 
     padding: 10px 20px;
     border-radius: 5px;
+    text-align: center;
     opacity: 0;
 
-    background-color: rgba(255, 255, 255, 0.788);
-    color: black;
+    background-color: var(--bg-primary);
+    filter: invert(1);
 
     transition: transform .3s ease, opacity .3s ease;
 }
@@ -67,6 +104,7 @@ a{
     position: fixed;
     width: 100vw; height: 75px;
     display: flex; gap: 5px;
+    background-color: var(--bg-primary);
 
     z-index: 999999;
 }
@@ -94,6 +132,10 @@ a{
     height: 22.5px;
     font-family: "Xanh Mono";
     font-size: xx-large;
+
+
+    display: flex;
+    align-items: center;
 }
 
 #landing-page .nav-link{
@@ -105,35 +147,8 @@ a{
     transition: color .5s ease;
 }
 #landing-page .nav-link:hover{
-    color: red;
+    color: var(--txt-hover);
 }
-/* #landing-page nav .right button{
-    width: 45px; height: 45px;
-    margin-inline: 2vw;
-
-    background-color: transparent;
-    border: none;
-
-    cursor: pointer;
-
-    display: flex; flex-direction: column;
-    justify-content: space-evenly; align-items: center;
-}
-#landing-page nav .right button div{
-    width: 80%; height: 1px;
-    background-color: white;
-    transition: transform .5s ease, background-color .5s ease;
-}
-
-#landing-page nav .right button.active div{
-    background-color: red;
-}
-#landing-page nav .right button.active div:nth-child(3){
-    transform: translateY(-11.5px);
-}
-#landing-page nav .right button.active div:nth-child(1){
-    transform: translateY(11.5px);
-} */
 
 #landing-page>div{
     width: 100%; height: 100%;
@@ -157,16 +172,16 @@ a{
     display: flex;
     justify-content: center; align-items: center;
 
-    cursor: pointer;
+    /* cursor: pointer; */
     border: none;
 
     background-color: transparent;
-    color: white;
+    color: var(--txt-color);
 
     transition: color .5s ease;
 }
 #landing-page>div .left .social-media:hover{
-    color: red;
+    color: var(--txt-hover);
 }
 
 #landing-page>div .mid{
@@ -205,7 +220,7 @@ a{
 }
 #landing-page>div .right span{
     width: 1px; height: 20px;
-    background-color: white;
+    background-color: var(--txt-color);
 }
 
 /* prayer times */
@@ -285,18 +300,26 @@ a{
 /* about */
 
 #about{
+    
+    height: 500vh;
+}
+
+#about>.slidder{
+    width: 100vw; height: 100vh;
     display: flex;
-    justify-content: center; align-items: stretch;
     flex-wrap: wrap;
-    /* background-color: orange; */
+    top: 0;
+    position: sticky;
 }
 
 #about .left,
 #about .right{
     flex: 1;
+
     min-width: 250px;
     padding-block: 10px;
-    /* border: 1px solid red; */
+
+    overflow: visible;
 }
 #about .left{
     display: flex; flex-direction: column;
@@ -325,11 +348,109 @@ a{
 #about .right{
     display: flex;
     justify-content: center; align-items: center;
-    perspective: 2000px;
-    perspective-origin: center;
+    overflow: visible;
 }
 
-#about .right #canvas{
-    min-height: 30vw;
+#about .right model-viewer{
+    overflow: visible;
+    height: 100%;
     width: 100%;
+}
+
+/* services */
+
+ #services{
+    display: flex;
+    padding: 4vw;
+    gap: 4vw;
+    flex-wrap: wrap;
+}
+
+#services div{
+    flex: 1;
+    min-width: 250px;
+    min-height: 250px;
+
+    display: flex; flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2vw;
+    padding: 20px;
+
+    border-radius: 25px;
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: inset 10px 10px 40px 0 rgba(0, 0, 0, 0.1);
+}
+
+#services div h2{
+    flex: 1;
+    width: 100%;
+
+    display: flex;
+    justify-content: center; align-items: center;
+    text-align: center;
+
+    font-size: 1.5em;
+}
+#services div ul{
+    flex: 3;
+    width: 100%;
+
+    display: flex; flex-direction: column;
+    justify-content: space-evenly; align-items: center;
+    text-align: center;
+}
+#services div ul li{
+    font-size: 1em;
+    list-style: none;
+}
+
+/* footer */
+
+footer{
+    min-height: 100px;
+    display: flex;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+footer .left,
+footer .right{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-inline: 2vw;
+}
+
+footer .left{
+    justify-content: start;
+}
+footer .left .social-media{
+    width: 45px; height: 45px;
+    display: flex;
+    justify-content: center; align-items: center;
+
+    /* cursor: pointer; */
+    border: none;
+
+    background-color: transparent;
+    color: var(--txt-color);
+
+    transition: color .5s ease;
+}
+footer .left .social-media:hover{
+    color: var(--txt-hover);
+}
+
+footer .right{
+    justify-content: end;
+}
+footer .right p{
+    font-family: "Martian Mono";
+    font-size: x-small;
+}
+footer .right span{
+    width: 20px; height: 1px;
+    background-color: var(--txt-color);
 }

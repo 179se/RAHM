@@ -13,10 +13,19 @@
 
     <script src="https://kit.fontawesome.com/10856fe2b6.js" crossorigin="anonymous"></script>
 
-    <!-- <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script> -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 
 </head>
 <body>
+
+    <div id="cursor">
+        <div class="slow">
+            <div class="scaler"></div>
+        </div>
+        <div class="fast">
+            <div class="scaler"></div>
+        </div>
+    </div>
 
     <section id="popups">
         <div class="add-to-clipboard">
@@ -34,13 +43,7 @@
             <span class="right">
                 <a href="#prayer-times" class="nav-link">Horaires</a>
                 <a href="#about" class="nav-link">A propos</a>
-                <a href="#" class="nav-link">Services</a>
-
-                <!-- <button>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </button> -->
+                <a href="#services" class="nav-link">Services</a>
             </span>
 
         </nav>
@@ -94,26 +97,80 @@
     </section>
 
     <section id="about">
-        <div class="left">
-            <span>
-                <h1>À propos de la mosquée</h1>
-                <p>La mosquée Al Mohsinine est un lieu de recueillement, de prière et de fraternité ouvert à toutes et à tous. Elle s'efforce chaque jour d'offrir un cadre accueillant, spirituel et éducatif au service de la communauté.</p>
-            </span>
-            <span>
-                <h4>Adresse</h4>
-                <p>avenue farcienne 30300 Beaucaire, France</p>
-            </span>
-        </div>
-        <div class="right">
-            <!-- <model-viewer src="../static/models/RAHM_v11.glb"
-                alt="modèle 3D de la mosquée"
-                auto-rotate
-                camera-controls
-                camera-orbit="-60deg 85deg 1m">
-            </model-viewer> -->
-            <canvas id="canvas"></canvas>
+        <div class="slidder">
+            <div class="left">
+                <span>
+                    <h1>À propos de la mosquée</h1>
+                    <p>La mosquée Al Mohsinine est un lieu de recueillement, de prière et de fraternité ouvert à toutes et à tous. Elle s'efforce chaque jour d'offrir un cadre accueillant, spirituel et éducatif au service de la communauté.</p>
+                </span>
+                <span>
+                    <h4>Adresse</h4>
+                    <p>avenue farcienne 30300 Beaucaire, France</p>
+                </span>
+            </div>
+            <div class="right">
+                <model-viewer src="../static/models/RAHM_v13.glb"
+                    alt="modèle 3D de la mosquée"
+                    ar
+                    exposure=".5"
+
+                    interaction-prompt="none"
+                    animation-name=""
+                    
+                    camera-orbit="calc(-9.5rad + env(window-scroll-y) * 5rad) 80deg 1m">
+                </model-viewer>
+            </div>
         </div>
     </section>
+
+    <section id="services">
+        <div>
+            <h2>Rites et accompagnement</h2>
+            <ul>
+                <li>Janaza (funérailles) – aide, démarches, prière mortuaire</li>
+                <li>Accompagnement à la conversion</li>
+                <li>Aide aux nouveaux musulmans</li>
+            </ul>
+        </div>
+
+        <div>
+            <h2>Éducation & enseignement</h2>
+            <ul>
+                <li>Cours d’arabe</li>
+                <li>Halaqas / cercles de science</li>
+            </ul>
+        </div>
+
+        <div>
+            <h2>Services religieux</h2>
+            <ul>
+                <li>Prières quotidiennes</li>
+                <li>Jumu’a</li>
+                <li>Taraweeh / Qiyam pendant Ramadan</li>
+                <li>Aid al-Fitr & Aid al-Adha</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <div class="left">
+            <a class="social-media" href="https://www.facebook.com/p/Mosque-mohsinine-100068033047489/" target="_blank">
+                <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <button class="social-media" onclick="copyToClipBoard()">
+                <i class="fa-solid fa-at"></i>
+            </button>
+            <button class="social-media" onclick="copyToClipBoard()">
+                <i class="fa-solid fa-phone"></i>
+            </button>
+        </div>
+
+        <div class="right">
+            <span></span>
+            <p> 179se. (Hamza.C)</p>
+            <span></span>
+        </div>
+    </footer>
 
     <script src="../static/js/main.js"></script>
 
