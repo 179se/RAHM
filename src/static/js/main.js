@@ -43,6 +43,8 @@ const date = document.querySelector('.current-date');
 const clockEl = date.querySelector('h1');
 const dateArEl = date.querySelector('p:nth-child(2)');
 const dateFrEl = date.querySelector('p:nth-child(3)');
+let filteredPrayers = []; // global
+let prayerBoxes = [];     // global
 
 const formatTimeUnit = unit => unit.toString().padStart(2, '0');
 
@@ -87,8 +89,78 @@ const updateTime = () => {
     const hijriMonthName = hijriMonths[hijriMonth - 1];
     const formattedHijriDate = `${hijriDay} ${hijriMonthName} ${hijriYear}`;
     dateArEl.textContent = formattedHijriDate;
+
+    updateNextPrayerActive();
 };
 
 updateTime();
 setInterval(updateTime, 1000);
+
+fetch('/src/static/py/confData.json')
+  .then(res => res.json())
+  .then(data => {
+    const now = new Date();
+    const mois = now.getMonth();      // 0-based
+    const jour = now.getDate();       // 1-based
+
+    const calendar = data.calendar;
+    const iqamaCalendar = data.iqamaCalendar;
+
+    const prayers = calendar[mois][jour - 1];
+    const iqamas = iqamaCalendar[mois][jour - 1];
+
+    // remove shuruq
+    filteredPrayers = [prayers[0], prayers[2], prayers[3], prayers[4], prayers[5]];
+    const filteredIqamas = iqamas; // même ordre
+
+    prayerBoxes = document.querySelectorAll('.prayer-box > div');
+
+    filteredPrayers.forEach((time, i) => {
+      const box = prayerBoxes[i];
+      if (!box) return;
+
+      const timeEl = box.querySelector('.time h1');
+      const extraTimeEl = box.querySelector('.extra-time p');
+
+      if (timeEl) timeEl.textContent = time;
+      if (extraTimeEl) extraTimeEl.textContent = filteredIqamas[i];
+    });
+
+    // Mettre à jour la prière active immédiatement
+    updateNextPrayerActive();
+  })
+  .catch(err => {
+    console.error("❌ Erreur de chargement du fichier JSON :", err);
+  });
+
+function updateNextPrayerActive() {
+  if (!filteredPrayers.length || !prayerBoxes.length) return;
+
+  const now = new Date();
+
+  const parseTimeToDate = (timeStr) => {
+    const [h, m] = timeStr.split(':').map(Number);
+    const d = new Date();
+    d.setHours(h, m, 0, 0);
+    return d;
+  };
+
+  let nextIndex = -1;
+  for (let i = 0; i < filteredPrayers.length; i++) {
+    const prayerTime = parseTimeToDate(filteredPrayers[i]);
+    if (now < prayerTime) {
+      nextIndex = i;
+      break;
+    }
+  }
+
+  if (nextIndex === -1) nextIndex = filteredPrayers.length - 1;
+
+  prayerBoxes.forEach((box, i) => {
+    box.classList.toggle("active", i === nextIndex);
+  });
+}
+
+
+
 
