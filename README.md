@@ -21,11 +21,8 @@ pages principales	:
 	- A propos
 	- Prière & Horaires
 	- Services
-	- Faire un don
-	- Contact
 
 fonctionnalités		:
 	- horaire prière (api ou calcul)
 	- version responsive sur mobile
-	- quizz du jour
 
